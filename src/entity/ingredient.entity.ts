@@ -12,16 +12,16 @@ import { Connect } from './connect.entity';
 
 @Entity('Ingredient')
 export class Ingredient extends BaseEntity {
-  @PrimaryGeneratedColumn({ type: 'bigint' })
+  @PrimaryGeneratedColumn({ type: 'int' })
   id: number;
 
   @Column({ type: 'varchar' })
   name: string;
 
-  @Column({ type: 'tinyint' })
+  @Column({ type: 'tinyint', nullable: true })
   oven: number;
 
-  @Column({ type: 'varchar' })
+  @Column({ type: 'varchar', nullable: true })
   type: string;
 
   @OneToMany(() => Connect, (connect) => connect.ingredient, {

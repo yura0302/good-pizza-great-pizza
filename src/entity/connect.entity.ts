@@ -14,7 +14,7 @@ import { Ingredient } from './ingredient.entity';
 
 @Entity('Connect')
 export class Connect extends BaseEntity {
-  @PrimaryGeneratedColumn({ type: 'bigint' })
+  @PrimaryGeneratedColumn({ type: 'int' })
   id: number;
 
   @ManyToOne(() => Order, (order) => order.connects, { onDelete: 'CASCADE' })

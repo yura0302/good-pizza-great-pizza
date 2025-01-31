@@ -12,8 +12,11 @@ import { Connect } from './connect.entity';
 
 @Entity('Order')
 export class Order extends BaseEntity {
-  @PrimaryGeneratedColumn({ type: 'bigint' })
-  id: bigint;
+  @PrimaryGeneratedColumn({ type: 'int' })
+  id: number;
+
+  @Column({ type: 'int', nullable: true })
+  base_order_id: number;
 
   @Column({ type: 'varchar', length: 200, nullable: true })
   name: string;
@@ -21,7 +24,7 @@ export class Order extends BaseEntity {
   @Column({ type: 'varchar', length: 10, default: 'pizza' })
   type: string;
 
-  @Column({ type: 'text' })
+  @Column({ type: 'text', nullable: true })
   script: string;
 
   @OneToMany(() => Connect, (connect) => connect.order, { cascade: true })
