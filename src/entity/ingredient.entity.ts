@@ -18,7 +18,7 @@ export class Ingredient extends BaseEntity {
   @Column({ type: 'varchar' })
   name: string;
 
-  @Column({ type: 'tinyint', nullable: true })
+  @Column({ type: 'int', nullable: true })
   oven: number;
 
   @Column({ type: 'varchar', nullable: true })

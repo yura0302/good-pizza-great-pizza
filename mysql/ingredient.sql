@@ -1,5 +1,7 @@
 INSERT INTO Ingredient (name, oven, type)
 VALUES 
+
+
 ("페퍼로니", NULL, "고기, 빨간색, 매움"),
 ("소시지", NULL, "고기"),
 ("베이컨", NULL, "고기, 빨간색"),
@@ -20,4 +22,10 @@ VALUES
 ("콘", NULL, "야채"),
 ("마늘", NULL, "야채, 고약함, 흰색"),
 ("아티초크", NULL, "야채"),
-("버섯", NULL, "버섯류, 흰색");
+("버섯", NULL, "버섯류, 흰색"),
+("기본도우", NULL, NULL),
+("밀도우", NULL,NULL),
+("토마토소스", NULL, NULL),
+("페스토소스", NULL, NULL),
+("치즈", NULL, NULL);
+
