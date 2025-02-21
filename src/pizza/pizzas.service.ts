@@ -29,13 +29,13 @@ export class PizzaService {
       : order;
 
     return {
-      pizzaId: order.id,
-      pizzaName: order.name,
-      pizzaImageUrl: order.imageUrl,
-      pizzaScript: order.script,
+      id: order.id,
+      name: order.name,
+      imageUrl: order.imageUrl,
+      script: order.script,
       ingredients: baseOrder.connects.map((connect) => ({
-        ingredientName: connect.ingredient.name,
-        ingredientImageUrl:
+        name: connect.ingredient.name,
+        imageUrl:
           typeof connect.ingredient.imageUrl === 'string'
             ? connect.ingredient.imageUrl
             : '',

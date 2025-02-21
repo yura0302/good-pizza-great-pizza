@@ -3,20 +3,20 @@ import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 export class ResponsePizzaDto {
   @IsNotEmpty()
   @IsNumber()
-  pizzaId: number;
+  id: number;
 
   @IsString()
-  pizzaName?: string;
+  name?: string;
 
   @IsString()
-  pizzaImageUrl?: string;
+  imageUrl?: string;
 
   @IsString()
-  pizzaScript?: string;
+  script?: string;
 
   @IsString()
   ingredients: {
-    ingredientName: string;
-    ingredientImageUrl?: string;
+    name: string;
+    imageUrl?: string;
   }[];
 }
