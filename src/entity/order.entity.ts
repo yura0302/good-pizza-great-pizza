@@ -16,7 +16,7 @@ export class Order extends BaseEntity {
   id: number;
 
   @Column({ type: 'int', nullable: true })
-  base_order_id: number;
+  base_order_id?: number;
 
   @Column({ type: 'varchar', length: 200, nullable: true })
   name: string;

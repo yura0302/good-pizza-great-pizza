@@ -1,13 +1,12 @@
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { IsNumber, IsString } from 'class-validator';
 
 export class SearchPizzaDto {
-  @IsNotEmpty()
   @IsNumber()
-  pizzaId: number;
+  id: number;
 
   @IsString()
-  pizzaName?: string;
+  name?: string;
 
   @IsString()
-  pizzaScript?: string;
+  script?: string;
 }

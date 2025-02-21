@@ -1,7 +1,9 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ResponsePizzaDto } from 'src/dto/response-pizza.dto';
+import { SearchPizzaDto } from 'src/dto/search-pizza.dto';
 import { Order } from 'src/entity/order.entity';
+import { ILike } from 'typeorm';
 import { Repository } from 'typeorm/repository/Repository';
 
 @Injectable()
@@ -39,5 +41,18 @@ export class PizzaService {
             : '',
       })),
     };
+  }
+
+  async getPizzaBySearch(order: string): Promise<SearchPizzaDto[]> {
+    const search = await this.orderRepository.find({
+      where: [{ name: ILike(`%${order}%`) }, { script: ILike(`%${order}%`) }],
+      order: { base_order_id: 'ASC' },
+    });
+
+    return search.map((result) => ({
+      id: result.id,
+      name: result.name,
+      script: result.script,
+    }));
   }
 }
