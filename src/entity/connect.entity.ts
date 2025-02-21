@@ -36,6 +36,6 @@ export class Connect extends BaseEntity {
   @UpdateDateColumn({ type: 'datetime' })
   updated_at: Date;
 
-  @DeleteDateColumn({ type: 'boolean', default: false })
-  deleted: boolean;
+  @DeleteDateColumn({ type: 'datetime', nullable: true })
+  deletedAt: Date;
 }

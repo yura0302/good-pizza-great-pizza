@@ -3,18 +3,12 @@ import { PizzaController } from './pizzas.controller';
 import { PizzaService } from './pizzas.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Order } from 'src/entity/order.entity';
-import { OrderRepository } from '../repository/order.repository';
-import { ConnectRepository } from 'src/repository/connect.repository';
-import { IngredientRepository } from 'src/repository/ingredient.repository';
+import { Ingredient } from 'src/entity/ingredient.entity';
+import { Connect } from 'src/entity/connect.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Order])],
+  imports: [TypeOrmModule.forFeature([Order, Ingredient, Connect])],
   controllers: [PizzaController],
-  providers: [
-    PizzaService,
-    OrderRepository,
-    ConnectRepository,
-    IngredientRepository,
-  ],
+  providers: [PizzaService],
 })
-export class PizzaModule {}
+export class PizzasModule {}

@@ -10,7 +10,7 @@ import {
 } from 'typeorm';
 import { Connect } from './connect.entity';
 
-@Entity('Order')
+@Entity(`Order`)
 export class Order extends BaseEntity {
   @PrimaryGeneratedColumn({ type: 'int' })
   id: number;
@@ -36,6 +36,6 @@ export class Order extends BaseEntity {
   @UpdateDateColumn({ type: 'datetime' })
   updated_at: Date;
 
-  @DeleteDateColumn({ type: 'boolean', default: false })
-  deleted: boolean;
+  @DeleteDateColumn({ type: 'datetime', nullable: true })
+  deletedAt: Date;
 }
