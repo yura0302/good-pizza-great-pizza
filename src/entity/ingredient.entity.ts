@@ -24,6 +24,9 @@ export class Ingredient extends BaseEntity {
   @Column({ type: 'varchar', nullable: true })
   type: string;
 
+  @Column({ type: 'varchar', nullable: true })
+  imageUrl?: string;
+
   @OneToMany(() => Connect, (connect) => connect.ingredient, {
     cascade: true,
   })

@@ -27,6 +27,9 @@ export class Order extends BaseEntity {
   @Column({ type: 'text', nullable: true })
   script: string;
 
+  @Column({ type: 'varchar', nullable: true })
+  imageUrl?: string;
+
   @OneToMany(() => Connect, (connect) => connect.order, { cascade: true })
   connects: Connect[];
 

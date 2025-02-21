@@ -19,15 +19,20 @@ export class PizzaService {
     if (!order) {
       throw new NotFoundException(`Can't find pizza with id ${id}`);
     }
-    console.log(order.connects[0].ingredient);
+    console.log(order.connects.map((connect) => connect.ingredient));
 
     const response: ResponsePizzaDto = {
       pizzaId: order.id,
       pizzaName: order.name,
+      pizzaImageUrl: order.imageUrl,
       pizzaScript: order.script,
-      ingredients: {
-        ingredientName: '',
-      },
+      ingredients: order.connects.map((connect) => ({
+        ingredientName: connect.ingredient.name,
+        ingredientImageUrl:
+          typeof connect.ingredient.imageUrl === 'string'
+            ? connect.ingredient.imageUrl
+            : '',
+      })),
     };
     return response;
   }

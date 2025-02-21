@@ -17,5 +17,6 @@ export class ResponsePizzaDto {
   @IsString()
   ingredients: {
     ingredientName: string;
-  };
+    ingredientImageUrl?: string;
+  }[];
 }
