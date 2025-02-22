@@ -1,23 +1,15 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
 import { ResponsePizzaDto } from 'src/dto/response-pizza.dto';
 import { SearchPizzaDto } from 'src/dto/search-pizza.dto';
-import { Order } from 'src/entity/order.entity';
+import { OrderRepository } from 'src/repository/order.repository';
 import { ILike } from 'typeorm';
-import { Repository } from 'typeorm/repository/Repository';
 
 @Injectable()
 export class PizzaService {
-  constructor(
-    @InjectRepository(Order)
-    private orderRepository: Repository<Order>,
-  ) {}
+  constructor(private orderRepository: OrderRepository) {}
 
   async getPizzaByOrder(id: number): Promise<ResponsePizzaDto> {
-    const order = await this.orderRepository.findOne({
-      where: { id },
-      relations: ['connects', 'connects.ingredient'],
-    });
+    const order = await this.orderRepository.findPizzaById(id);
 
     if (!order) throw new NotFoundException(`Can't find pizza with id ${id}`);
 

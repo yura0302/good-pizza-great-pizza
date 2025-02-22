@@ -8,4 +8,11 @@ export class OrderRepository extends Repository<Order> {
   constructor(@InjectDataSource() dataSource: DataSource) {
     super(Order, dataSource.createEntityManager());
   }
+
+  findPizzaById(id: number) {
+    return this.findOne({
+      where: { id },
+      relations: ['connects', 'connects.ingredient'],
+    });
+  }
 }
